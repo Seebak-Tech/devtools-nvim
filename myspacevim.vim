@@ -21,6 +21,13 @@ function! myspacevim#before() abort
     " previa los cambios que se realizaran ejemplo: :%s/word/change/gc
 
     set inccommand=split
+    
+    " Configuracion autofolding
+    set foldmethod=indent
+    set foldnestmax=2
+
+    " Muestra una linea que indica que se llego al numero maximo de columnas
+    let &colorcolumn = join(range(81,999), ',')
 
 endf
 
