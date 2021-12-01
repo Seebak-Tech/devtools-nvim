@@ -1,14 +1,15 @@
 FROM seebaktec/pyenv
 
 ARG VERSION=0.0.0
+ARG NODEJS_VERSION=setup_16.x
 
 LABEL "Version" = $VERSION
 LABEL "Name" = "devtools-nvim"
 
 USER root
 
-# Install packages
-RUN apt-get update \
+# Adding NodeSource repository before install packages
+RUN curl -sL https://deb.nodesource.com/$NODEJS_VERSION | sudo -E bash - \
     && apt-get install -y -q --allow-unauthenticated \
     autoconf \
     automake \
@@ -20,7 +21,7 @@ RUN apt-get update \
     libtool-bin \
     lua5.3 \
     ninja-build \
-    npm \
+    nodejs \
     openssh-server \
     pkg-config \
     unzip \
@@ -68,8 +69,9 @@ RUN pyenv install $PYTHON3_VERSION \
     && pip install --upgrade pip \
     && pip install neovim \
     && mkdir -p $HOME/.config $HOME/.SpaceVim.d \
-    && curl -sLf https://spacevim.org/install.sh | bash \
-    && sudo npm install -g neovim
+    && curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim \
+    && sudo npm install -g neovim \
+    && sudo chmod 707 $HOME/.cache/nvim
 
 COPY --chown=admin myspacevim.vim $HOME/.SpaceVim.d/autoload/myspacevim.vim 
 
