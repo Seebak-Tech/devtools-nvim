@@ -13,10 +13,8 @@ RUN curl -sL https://deb.nodesource.com/$NODEJS_VERSION | sudo -E bash - \
     && apt-get install -y -q --allow-unauthenticated \
     autoconf \
     automake \
-    cmake \
     fish \
     g++ \
-    gettext \
     libtool \
     libtool-bin \
     lua5.3 \
