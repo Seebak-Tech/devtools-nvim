@@ -23,6 +23,7 @@ RUN curl -sL https://deb.nodesource.com/$NODEJS_VERSION | sudo -E bash - \
     nodejs \
     openssh-server \
     pkg-config \
+    silversearcher-ag \
     unzip \
     xclip \
     xfonts-utils \
