@@ -2,6 +2,7 @@ FROM seebaktec/pyenv
 
 ARG VERSION=0.0.0
 ARG NODEJS_VERSION=setup_16.x
+ARG PYTHON3_VERSION=3.9.9
 
 LABEL "Version" = $VERSION
 LABEL "Name" = "devtools-nvim"
@@ -49,8 +50,6 @@ ENV HOME=/home/admin \
     PATH=/home/admin/.pyenv/shims:/home/admin/.pyenv/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:.  \
     PYTHON3_HOST_PROG=/home/admin/.pyenv/versions/neovim3/bin/python \
     PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-ARG PYTHON3_VERSION=3.9.2
 
 WORKDIR $HOME
 
